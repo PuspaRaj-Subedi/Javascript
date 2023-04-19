@@ -1,0 +1,40 @@
+This is the hardest array function among map, filter, and forEach. Read this lesson multiple times if necessary. This isn’t easy to get the hang of.
+
+reduce is essentially a version of forEach that is meant to be a pure function.
+
+We’re doing something with each item in the array, but we’re not necessarily being returned an array. We’re also not supposed to be affecting the outer scope at all.
+
+The purpose of reduce is to turn an array of items into a single value. We’re going to start with a beginning value and each item in the array should transform our value in some way. The end result after all items have transformed our value is what we get back from the function.
+
+The arguments that reduce gives our callback are a little different than map, filter, and forEach. We also have the option of giving it an extra parameter. Let’s show an example and then discuss it.
+
+const arr = ['Hello', 'there!', 'How', 'are', 'you', 'doing?'];
+
+const str = arr.reduce((accumulator, nextItem) => {
+    var accumulatorWithNextItem = accumulator + nextItem + ' ';
+    return accumulatorWithNextItem;
+}, ''); // <- Passing in an extra parameter to reduce
+
+console.log(str);
+
+
+Here accumulator first is ''. nestItem is first itemm of array so accumulatorWithNestItem will get accumulator + nestItem + ' '.
+So its value will be thsi which is the second iterate value of accumulator.
+
+
+
+Let’s log out each value of the accumulator and next item in the function above. Take a look at what’s being printed.
+
+
+const arr = ['Hello', 'there!', 'How', 'are', 'you', 'doing?'];
+
+const str = arr.reduce((accumulator, nextItem) => {
+    console.log('accumulator:', accumulator);
+    console.log('nextItem:', nextItem);
+    console.log('\n');
+  
+    const accumulatorWithNextItem = accumulator + nextItem + ' ';
+    return accumulatorWithNextItem;
+}, '');
+
+console.log('Final string:', str);
