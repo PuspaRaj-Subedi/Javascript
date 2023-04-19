@@ -39,3 +39,36 @@ it will jump upwards into the parent scope and look there, and keep going upward
 and out until it either finds the variable or reaches the global scope.
 
 
+
+//Now Variable Hoisting
+
+lets look a example first
+console.log(x) -> undefined
+var x = 5;
+console.log(x) -> 5
+console.log(y) // yis not defined
+
+Why x gives undefined and y gives error?
+Javascript variable declaration is hoisted or moved to the top of their available scope. The code runs like
+
+var x;
+console.log(x)
+x=5;
+console.log(5)
+console.log(y)
+
+Note that only the variable declaration, not the assignment, is hoisted.
+
+
+//function Hoisting
+fnDeclaration(); // -> This works!
+fnExpression(); // -> Uncaught TypeError: fnExpression is not a function
+
+function fnDeclaration() {
+    console.log('This works!');
+}
+
+var fnExpression = function() {
+    console.log("This won't work :(");
+}
+
