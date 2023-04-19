@@ -1,0 +1,123 @@
+<--------------------------------Map--------------------------------------------->
+Defination:
+Map allow us to manipulate the data effectively and efficiently. It meant us to create a copy of array
+and change it little bit in the process.
+
+Array.map is meant to transform one array into another by performing some operation on each of its values. 
+The original array is left untouched and the function returns a reference to a new array.
+
+Array.map is pure function because it creates a new array and work on it rather then changing the main array:
+
+
+##Example (Multiple every number of array by 3)
+
+Previous Method
+const arr = [1,2,3,4]
+ const newArr = [];
+for(let i =0; i < arr.length; i++)
+{
+  newArr[i] =  arr[i] * 3;
+}
+console.log(newArr);
+
+
+With Map
+const arrTimesThree = arr.map(function(item) {
+   return item * 3;
+});
+Or with Array Function
+const test = arr.map(item => item* 3);
+console.log(test) // [3,6,9,12]
+
+
+//(item, index, arr as param in map
+
+
+
+<----------------------------------------Filter----------------------------------------->
+Defination: The idea here is similar to Array.map, except instead of transforming individual
+values, we want to filter existing values. Without any functions (besides Array.push), 
+say we want to filter out values in an array that are less than 5:
+
+
+Simple Method (for-loop)
+const arr = [2, 4, 6, 8, 10];
+const filteredArr = [];
+
+for(let i = 0; i < arr.length; i++) {
+    if(arr[i] >= 5) {
+        filteredArr.push(arr[i]);
+    }
+}
+
+console.log(filteredArr); // -> [6, 8, 10]
+
+
+
+Filter 
+// Although not visible, we have access to the
+// 'filter' function from the above block.
+
+const arr = ['abc', 'def', 'ghijkl', 'mnopuv'];
+
+function longerThanThree(str) {
+    return str.length > 3;
+}
+
+const newArr1 = filter(arr, longerThanThree);
+const newArr2 = arr.filter(longerThanThree);
+
+console.log(newArr1); // -> ['ghijkl', 'mnopuv']
+console.log(newArr2); // -> ['ghijkl', 'mnopuv']
+
+
+
+
+
+
+
+<---------------------------------------For Each ------------------------------------->
+Array.forEach is different from map & filter. You may find it easier to reason about. map & filter return us new, altered arrays based off of the original array. forEach returns us undefined. 
+It’s used purely to do something with the items in an array, not to get a new array out of it.
+
+
+Simple Method 
+const arr = ['Hello', 'there!', 'How', 'are', 'you', 'doing?'];
+let str = '';
+
+for(let i = 0; i < arr.length; i++) {
+    const word = arr[i];
+    console.log(word);
+    str += word + ' ';
+}
+
+console.log(`Final string: "${str}"`);
+
+
+
+
+ForEach Method
+const arr = ['Hello', 'there!', 'How', 'are', 'you', 'doing?'];
+let str = '';
+
+arr.forEach(word => {
+    console.log(word);
+    str += word + ' ';
+});
+
+console.log(`Final string: "${str}"`);
+
+Map Method 
+arr.map( word => {
+  str += word + ' ';
+});
+
+Filter Method
+
+arr.filter(word => {
+    console.log(word);
+    str += word + ' ';
+});
+
+console.log(`Final string: "${str}"`);
+
