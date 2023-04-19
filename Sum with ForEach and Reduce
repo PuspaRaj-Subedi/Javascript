@@ -1,0 +1,17 @@
+function add(numbers) {
+    let sum = 0;
+    numbers.forEach(number =>
+    {
+        return sum += number;
+    });
+    return sum;
+}
+
+function add(numbers)
+{
+    return numbers.reduce((accumulator, nestItem) => 
+    {
+        var total = accumulator + nestItem;
+        return total;
+    }, 0);
+}
