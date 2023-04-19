@@ -1,0 +1,41 @@
+lETS LOOK AFTER THIS EXAMPLE
+
+var a = 'abc';
+var b = 'def';
+
+function fn() {
+    a = 123; //change in outer scope.
+    var b = 456;
+    console.log(a, b)
+}
+
+fn();
+
+This funtion gives output 123, 456. 
+Because b takes the value of declarartion from local scope of function and 
+a gives the input change for global scope variable inside the function.
+
+
+lets look Deeper
+
+var x = 5; //Global Variable
+var y = 10;
+
+function fn() {
+    var y = 20;
+    console.log(x);
+    console.log(y);
+}
+
+fn(); // 5 // 20 
+
+console.log(x); // 5 
+console.log(y); // 10
+
+x take value from global scope and y take the local scope . in fn but take global scope outside of function.
+Note: There’s a mechanism behind variable lookup in JavaScript. When we try to access a variable, 
+the JavasScript engine first looks at the current scope level. If the variable isn’t found, 
+it will jump upwards into the parent scope and look there, and keep going upwards 
+and out until it either finds the variable or reaches the global scope.
+
+
