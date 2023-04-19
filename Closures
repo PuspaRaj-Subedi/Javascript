@@ -1,0 +1,60 @@
+##Defination: 
+A closure refers to the lexical context a function was declared in and the variables it has access to.
+Closures allow us to 
+1. dynamically create functions, 
+2. implement encapsulation, and 
+3. create interfaces to interact with our code. 
+
+Example Dynamically generate functions
+let us supposed to gives output is given number plus 10 ,20, 30, or any number 
+
+function addfactory(num)
+{
+  return function(num2)
+  {
+    return num + num2;
+  }
+}
+
+const add10 = addFactory(10);
+const add20 = addFactory(20);
+const add30 = addFactory(30);
+
+console.log(add10(5)); // -> 15
+console.log(add20(6)); // -> 26
+console.log(add30(7));
+
+# Scope Persistence
+When a function is created, it retains access to the scope that it was created in. 
+If it’s created inside another function, it retains access to the scope of that outer function even after that outer function returns.
+
+function fnGenerator(str) {
+    const stringToLog = 'The string I was given is "' + str + '"';
+  
+    return function() {
+        console.log(stringToLog);
+    }
+}
+
+const fnReturned = fnGenerator('Bat-Man');
+fnReturned(); // -> The string I was given is "Bat-Man"
+
+#encapsulation
+
+Say we’re writing a function that keeps track of how many times it’s been invoked. We’ll need to make a counter variable and increment it by 1 every time it’s called. We never want the user to change counter themselves - we want it only changeable by calling the function. Using this idea of scope persistence, we can make it so the only way a user can change counter is the way we want them to.
+
+
+function counterGenerator() {
+    let counter = 1;
+  
+    return function() {
+        return counter++;
+    }
+}
+
+const incrementCounter = counterGenerator();
+console.log(incrementCounter()); // -> 1
+console.log(incrementCounter()); // -> 2
+counter = 100; // <- sets a new global variable 'counter';
+               // the one inside counterGenerator is unchanged
+console.log(incrementCounter()); // -> 3
