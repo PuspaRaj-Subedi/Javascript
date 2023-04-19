@@ -1,0 +1,71 @@
+One of the powerfull way to write cleaner callbacks
+ Example:
+ 
+ Normal Function 
+ const test = function(num1, num2)
+ {
+    console.log(num1, num2);
+ }
+ 
+ const testArrow = (num1, num2) => {  //no return needed , no function
+  console.log(num1, num2)
+ }
+ 
+ 
+ When to use Arrow Function
+ Arrow function are generally used only when function only exists to be used in one place. Therefore,
+ it doesn't need the name.
+ 
+ ##Array & Object Destructing
+ 
+ Array and object destructuring can truly change the way we write a lot of our code. 
+ They greatly clean up our code by reducing the number of lines we need to write when working with
+ objects and arrays. We'll cover their nuances and show how they work in every situation.
+ 
+ var arr = [1, 2, 3];
+var one = arr[0];
+var two = arr[1];
+var three = arr[2];
+console.log(one, two, three); // -> 1 2 3
+
+// ---------------------------------------
+
+var obj = {
+    key1: 'val1',
+    key2: 'val2'
+};
+var key1 = obj.key1;
+var key2 = obj.key2;
+console.log(key1, key2); // -> val1 val2
+ 
+------> have new technique ------------------->
+const arr = [1, 2, 3];
+const [one, two, three] = arr;
+console.log(one, two, three); // -> 1 2 3
+
+// ---------------------------------------
+
+const obj = {
+    key1: 'val1',
+    key2: 'val2'
+};
+const { key1, key2 } = obj;
+console.log(key1, key2); // -> val1 val2
+
+
+
+#Default Values with Destructuring
+Similar to default values in functions, we can use default values when destructuring.
+
+
+const arr = [1, 2];
+const [one = 'one', two = 'two', three = 'three'] = arr;
+console.log(one, two, three); // -> 1 2 'three'
+
+const obj = { key1: 'val1' };
+const {
+    key1 = 'val1Default',
+    key2 = 'val2Default'
+} = obj;
+console.log(key1, key2); // -> val1 val2Default
+
