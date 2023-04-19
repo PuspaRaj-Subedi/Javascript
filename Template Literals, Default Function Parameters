@@ -1,0 +1,49 @@
+Strings created with backticks (`) retain their formatting exactly as written.
+
+const str = `Hello there!
+This new type of string keeps linebreaks in the string.
+It also keeps all other types of whitespace.
+A       tab is preserved correctly.
+Multiple
+
+linebreaks
+
+are all
+
+preserved
+
+correctly.        Sweet.`;
+
+console.log(str);
+
+
+We also have a way of inserting variables into this string and having them automatically parsed. We can insert the characters ${} into a template literal string. Anything inside the brackets will be evaluated as JavaScript and inserted into the final string.
+
+const firstName = 'John';
+const lastName = 'Smith';
+
+var oldWay = 'Hi! My name is ' + firstName + ' ' + lastName + '!';
+const newWay = `Hi! My name is ${firstName} ${lastName}!`;
+
+console.log(oldWay); // -> Hi! My name is John Smith!
+console.log(newWay); // -> Hi! My name is John Smith!
+
+
+#deafult function parameters
+
+In older ways we can't have default value in parameters of function but now we can provide default value to the parameters in a function as
+
+Older Ways:
+function test( param)
+{
+  if(param == undefined
+  {
+  Paran = "test"
+  }
+}
+
+New Ways
+function test(param = "Test")
+{
+  console.log(param);
+}
