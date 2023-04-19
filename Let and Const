@@ -1,0 +1,30 @@
+Let is similar to the var
+Different is 
+ 1. Not hoisted
+ 2. Block Scoped
+ 3. Duplicate declaration Fails
+ 
+ #Not Hoisted means if we call the variable before defining and declaration then it gives error as 
+ 
+ Example:
+ 
+ console.log(x) -> error
+ let x = 5; 
+ console.log(x) -> 5
+ 
+ But in var first line gives us undefined beacause var declaration is moved to the top of that scope.
+ 
+ #Block scoped means it cannot be accessible from outside the blocked as 
+ 
+ {
+ let x = 5;
+ console.log(x) -> 5
+ }
+ console.log(x) -> error
+ 
+ 
+ ### Const
+ It is similar as let.
+  Different is : 
+    1. cannot be reassigned
+    2. no empty initializations
