@@ -1,0 +1,38 @@
+#Defination: 
+Callbacks are functions that are passed to other function as parameters
+Most powerfull properties of Javascript so called first class objects.
+
+  function test()
+  {
+    console.log("test 1");
+  }
+
+  fn.test = function()
+  {
+  console.log("test 2");
+  }
+
+  test(); // "test1"
+  fn.test(); //
+  
+  
+Real Call back Example
+ function fnCaller(fn) {
+    fn();
+}
+
+function log() {
+    console.log('Calling log');
+}
+
+fnCaller(log); // Calling Log
+
+Another Example for Multiply
+
+function multiply(x, y) {
+    return x * y;
+}
+
+function callMultiply(fn, val1, val2) {
+    return fn(val1,val2);
+}
