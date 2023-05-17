@@ -1,0 +1,76 @@
+<!-------------------------------------------------------Why Asynchronus Javascript----------------------------------------------------------->
+The Need for Async
+Loading Websites
+The need for asynchronous code arises as soon as requests need to be made. A web request takes measurable, palpable time, on the order of tenths of a second or even seconds. Many pages make several requests.
+
+If code were synchronous, these several requests would have to be made in series. One request would launch and no other code would run until that request completed, either 100ms or up to a few seconds later. We wouldn’t be able to scroll or move our mouse during this as the engine would be waiting for a response, frozen until it receives one.
+
+Imagine a dozen of those requests all loading one-by-one to create one website. It would be ages before the page allowed us to do anything.
+
+With asynchronous code, we can launch all of these requests at once and deal with the data as it comes in. In the meantime, we can listen to user actions such as scrolling and button clicks.
+
+We attach callbacks, event listeners, to these requests. Once data arrives, we trigger our callbacks and do something with the data, such as adding it to the DOM.
+
+In the next lesson, we’ll learn some common techniques for implementing asynchronous code into our projects.
+
+<!--------------Callbacks, setTimeout, & the Event Loop --------------------------------->
+What Callbacks Do
+Callbacks are absolutely vital to asynchronous programming. 
+The only way for us to tell JavaScript to do something in the future is to provide a callback that will be invoked later.
+
+JavaScript allows us to attach a callback to a particular event. 
+We can tell JavaScript that when some event happens, we want to run some function. That’s the gist of the whole concept.
+
+The event can be anything. In a browser, it can be a button click from a user. 
+On a file system, it can be a file read operation. We can attach handlers to these events, saying that every time this event happens, we want something else to happen.
+
+For example, when a user clicks a button, perhaps we want to load more content or open a pop-up. 
+When a file read operation occurs, perhaps we want to log the event for security and auditing purposes.
+
+To set up an event listener on a button, we pass in a callback to a function such as jQuery. 
+That function binds our callback to the button. When the button is clicked, our callback is called and whatever changes need to happen to the page occur through it.
+
+<!_----------------------------------How to Use them ----------------------------------------->
+DOM
+If you’ve ever used jQuery you’ve seen that it’s entirely based on callbacks.
+//Code Example
+$('#submitButton').on('click', function() {
+    console.log('You clicked me!');
+});
+
+//Description of Above COde
+The second parameter to ＄('#submitButton').on is an anonymous function. 
+If we had an HTML page with a button with an id of submitButton, this code block would set that function as the event handler on it. 
+It’ll simply call the function and log 'You clicked me!' every time we click the button.
+
+<!-------------------------------------------setTimeout---------------------------------------------------->
+setTimeout is an asynchronous function that we can explore right away built into JavaScript. We don’t need a browser. 
+It’ll run in any JavaScript environment. It takes in a callback function as a parameter and a number as the second parameter.
+
+The number we pass in is how long setTimeout will wait before calling our function, in milliseconds. 
+So if we want to wait 1 second, we would pass in 1000.
+
+Unfortunately, we can’t view asynchronous code working in this code editor - the output loads only after everything has run, including asynchronous code. 
+
+//Code for setTimeout
+function printCharacters() {
+    console.log('Logged!');
+}
+
+setTimeout(printCharacters, 1000);
+// (After one second:) Logged!
+
+<!---------------------Dynamic LOading Use Case-------------------->
+$('#loadMoreItems').on('click', function() {
+    $.ajax({
+        url: '/more-data',
+        success: function(data) {
+            $('#content').html(data);
+        }
+    });
+});
+
+
+
+
+
