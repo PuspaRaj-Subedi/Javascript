@@ -1,0 +1,71 @@
+Like arrays, JavaScript objects have several functions available to them. There’s one that is by far more useful than any of the others: Object.keys.
+
+One way to loop through each of an object’s properties is to use a for-in loop. 
+This will iterate through the properties and allow us to work with the object’s keys.
+
+const obj = {
+    val1: 'abc',
+    val2: 'def'
+};
+
+for(const key in obj) { // const works here, but not in normal for-loops
+    console.log(key, obj[key]);
+}
+// -> val1 abc
+// -> val2 def
+
+
+Object.keys allows us to do more. It takes in an object as a parameter and returns an array that contains the keys of the object.
+
+const obj = {
+    val1: 'abc',
+    val2: 'def'
+};
+const keys = Object.keys(obj) 
+console.log(keys); // -> ['val1', 'val2]
+
+
+Chaining the Array Methods if we want value of object then we can use chain method to get the value.
+const obj = {
+    val1: 'abc',
+    val2: 'def'
+};
+const values = Object.keys(obj).map(key => obj[key]);
+console.log(values); // -> ['abc', 'def']
+
+
+We’re using Object.keys to get an array of the keys of obj.
+We call map on that array and turn each key into obj[key], the value of that key in obj. 
+The result is the values of obj.
+
+We can do more than this. What if we want to get all values in an object that are not null?
+const obj = {
+    val1: 'abc',
+    val2: 'def',
+    val3: '',
+    nullProperty: null
+};
+
+const values = Object.keys(obj)
+  .map(key => obj[key])
+  .filter(value => value !== null);
+
+console.log(values); // -> ['abc', 'def', '']
+
+
+//Question to add 3 on every and sum them
+
+const obj = {
+    val1: 4,
+    val2: 5,
+    val3: 6,
+};
+
+// Finish this:
+const sum = Object.keys(obj).map(function(key)
+{
+    return obj[key] * 3;
+}).reduce(function(accum, next)
+{
+    return accum + next;
+})
